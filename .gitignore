@@ -1,0 +1,7 @@
+.idea/
+.idea_modules/
+*~
+Data/
+.gitcpy
+.env
+.git_old

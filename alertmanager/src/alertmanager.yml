@@ -1,0 +1,19 @@
+global:
+    smtp_smarthost: 'GF_SMTP_HOST'
+    smtp_from: 'GF_SMTP_FROM_ADDRESS'
+    smtp_auth_username: 'GF_SMTP_USER'
+    smtp_auth_password: 'GF_SMTP_PASSWORD'
+
+templates:
+    - '/src/monitoring.tmpl'
+
+route:
+    receiver: 'team-X-mails'
+
+receivers:
+    - name: 'team-X-mails'
+      email_configs:
+          - to: 'GF_SMTP_TO_ADDRESS'
+            require_tls: false
+            send_resolved: true
+            html: '{{ template "email.monitoring.html" . }}'

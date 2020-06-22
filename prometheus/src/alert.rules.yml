@@ -1,0 +1,10 @@
+groups:
+  - name: Active
+    rules:
+      - alert: SiteDown
+        expr: probe_success == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          description: '{{ $labels.instance }} has been reported as down'
